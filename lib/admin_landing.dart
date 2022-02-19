@@ -1,3 +1,4 @@
+import 'package:demo/res_table/nav_buttons.dart';
 import 'package:demo/sample_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -42,13 +43,13 @@ class _AdminLandingState extends State<AdminLanding> {
                     title: const Text('Ahmed'),
                     subtitle: const Text('job title'),
                   ),
-                  const navButtons('Home'),
-                  const navButtons('Employee Management'),
-                  const navButtons('Management page 3'),
-                  const navButtons('Management page 4'),
-                  const navButtons('Settings'),
+                  const NavButtons('Home'),
+                  const NavButtons('Employee Management'),
+                  const NavButtons('Management page 3'),
+                  const NavButtons('Management page 4'),
+                  const NavButtons('Settings'),
                   const Spacer(),
-                  const navButtons('SignOut'),
+                  const NavButtons('SignOut'),
                 ],
               ),
             ),

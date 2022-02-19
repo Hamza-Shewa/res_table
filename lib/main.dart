@@ -5,6 +5,7 @@ import 'package:demo/sign-in-up.dart';
 import 'package:flutter/material.dart';
 
 import 'res_table/cell.dart';
+import 'res_table/nav_buttons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,13 +68,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text('Ahmed'),
                     subtitle: const Text('job title'),
                   ),
-                  const navButtons('Home'),
-                  const navButtons('Employee Management'),
-                  const navButtons('Management page 3'),
-                  const navButtons('Management page 4'),
-                  const navButtons('Settings'),
+                  const NavButtons('Home'),
+                  const NavButtons('Employee Management'),
+                  const NavButtons('Management page 3'),
+                  const NavButtons('Management page 4'),
+                  const NavButtons('Settings'),
                   const Spacer(),
-                  const navButtons('SignOut'),
+                  const NavButtons('SignOut'),
                 ],
               ),
             ),
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Container(
                     alignment: Alignment.topRight,
-                    child: const navButtons('add new employee'),
+                    child: const NavButtons('add new employee'),
                   ),
                   ResTable(
                     header: const [
@@ -236,41 +237,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class navButtons extends StatelessWidget {
-  const navButtons(
-    this.text, {
-    Key? key,
-  }) : super(key: key);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: TextButton(
-        style: ButtonStyle(
-            fixedSize: MaterialStateProperty.all(
-              const Size(200, 60),
-            ),
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.hovered)) {
-                return Colors.lightBlue[200];
-              }
-              return Colors.white54;
-            })),
-        onPressed: () {
-          print('1');
-        },
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.headline6,
-        ),
       ),
     );
   }
