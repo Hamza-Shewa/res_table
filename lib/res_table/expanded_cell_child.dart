@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ExpandedCellChild extends StatelessWidget {
-  const ExpandedCellChild({Key? key, required this.child}) : super(key: key);
+  const ExpandedCellChild({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   final Widget child;
 
