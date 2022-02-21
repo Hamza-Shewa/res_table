@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class NavButtons extends StatelessWidget {
   const NavButtons(
-      this.text, {
-        Key? key,
-      }) : super(key: key);
+    this.text, {
+    Key? key,
+  }) : super(key: key);
 
   final String text;
 
@@ -28,7 +28,7 @@ class NavButtons extends StatelessWidget {
         },
         child: Text(
           text,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.bodyText2,
         ),
       ),
     );

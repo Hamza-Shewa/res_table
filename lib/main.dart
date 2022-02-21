@@ -1,5 +1,8 @@
 import 'package:demo/admin_landing.dart';
 import 'package:demo/landing.dart';
+import 'package:demo/res_table/cell_button.dart';
+import 'package:demo/res_table/expanded_cell.dart';
+import 'package:demo/res_table/expanded_cell_child.dart';
 import 'package:demo/res_table/res_table.dart';
 import 'package:demo/sign-in-up.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +43,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String text = 'signOut';
+
+  update() {
+    setState(() {
+      text = 'signed out';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,16 +68,30 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.blue,
               child: Column(
                 children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Text(
-                        'A',
-                        style: Theme.of(context).textTheme.headline4,
+                  Flexible(
+                    child: ListTile(
+                      title: CircleAvatar(
+                        child: Text(
+                          'A',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                        radius: 30,
                       ),
-                      radius: 30,
+                      subtitle: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'ahmed\n',
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            TextSpan(
+                              text: 'Manager',
+                              style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    title: const Text('Ahmed'),
-                    subtitle: const Text('job title'),
                   ),
                   const NavButtons('Home'),
                   const NavButtons('Employee Management'),
@@ -74,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const NavButtons('Management page 4'),
                   const NavButtons('Settings'),
                   const Spacer(),
-                  const NavButtons('SignOut'),
+                  NavButtons(text),
                 ],
               ),
             ),
@@ -101,135 +126,54 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                     children: [
                       for (int i = 0; i < 25; i++)
-                        SizedBox(
-                          width: (6 * 200) + (10 * 2 * 6),
-                          child: ExpansionTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Row(
-                              children: [
-                                Cell(text: 'name $i'),
-                                Cell(text: 'age $i'),
-                                Cell(text: 'city $i'),
-                                Cell(text: 'national $i'),
-                                //cell('gender $i'),
-                                Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: TextButton(
-                                    style: ButtonStyle(
-                                        fixedSize: MaterialStateProperty.all(
-                                          const Size(200, 60),
-                                        ),
-                                        backgroundColor:
-                                            MaterialStateProperty.resolveWith(
-                                                (states) {
-                                          if (states.contains(
-                                              MaterialState.hovered)) {
-                                            return Colors.lightBlue[200];
-                                          }
-                                          return Colors.white54;
-                                        })),
-                                    onPressed: () {
-                                      print('edited');
-                                    },
-                                    child: const Icon(
-                                      Icons.edit,
-                                      color: Colors.green,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: TextButton(
-                                    style: ButtonStyle(
-                                        fixedSize: MaterialStateProperty.all(
-                                          const Size(200, 60),
-                                        ),
-                                        backgroundColor:
-                                            MaterialStateProperty.resolveWith(
-                                                (states) {
-                                          if (states.contains(
-                                              MaterialState.hovered)) {
-                                            return Colors.lightBlue[200];
-                                          }
-                                          return Colors.white54;
-                                        })),
-                                    onPressed: () {
-                                      print('deleted');
-                                    },
-                                    child: const Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                        ExpandedCell(
+                          title: [
+                            Cell(text: 'name $i'),
+                            Cell(text: 'age $i'),
+                            Cell(text: 'city $i'),
+                            Cell(text: 'national $i'),
+                            CellButton(
+                              child: const Icon(
+                                Icons.edit,
+                                color: Colors.green,
+                              ),
+                              onPressed: update,
                             ),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          width: 2,
-                                          color:
-                                              Colors.black54.withOpacity(0.2),
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      height: 80,
-                                      width: 200,
-                                      child: ListTile(
-                                        title: const Text('license number\n'),
-                                        isThreeLine: true,
-                                        subtitle: Text('license $i'),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          width: 2,
-                                          color:
-                                              Colors.black54.withOpacity(0.2),
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      height: 80,
-                                      width: 200,
-                                      child: ListTile(
-                                        title: const Text('phone number\n'),
-                                        subtitle: Text('00218$i'),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          width: 2,
-                                          color:
-                                              Colors.black54.withOpacity(0.2),
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      height: 80,
-                                      width: 200,
-                                      child: ListTile(
-                                        title: const Text('place of birth\n'),
-                                        subtitle: Text('place of birth $i'),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                            CellButton(
+                              child: const Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    text = 'deleted';
+                                  },
+                                );
+                              },
+                            ),
+                          ],
+                          children: [
+                            ExpandedCellChild(
+                              child: ListTile(
+                                title: const Text('license number\n'),
+                                isThreeLine: true,
+                                subtitle: Text('license $i'),
+                              ),
+                            ),
+                            ExpandedCellChild(
+                                child: ListTile(
+                              title: const Text('phone number\n'),
+                              subtitle: Text('00218$i'),
+                            )),
+                            ExpandedCellChild(
+                              child: ListTile(
+                                title: const Text('place of birth\n'),
+                                subtitle: Text('place of birth $i'),
+                              ),
+                            ),
+                          ],
+                        )
                     ],
                   ),
                 ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Cell extends StatelessWidget {
   const Cell({Key? key, required this.text}) : super(key: key);
+
   final String text;
 
   @override

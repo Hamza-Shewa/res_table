@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-
-import 'cell.dart';
 
 class ResTable extends StatelessWidget {
   ResTable({
@@ -9,9 +6,11 @@ class ResTable extends StatelessWidget {
     required this.header,
     required this.children,
   }) : super(key: key);
-  final ScrollController _controller = ScrollController();
-  final List<Widget> header;
+
   final List<Widget> children;
+  final List<Widget> header;
+
+  final ScrollController _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +36,7 @@ class ResTable extends StatelessWidget {
               ),
               Flexible(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children:children
-                  ),
+                  child: Column(children: children),
                 ),
               )
             ],
