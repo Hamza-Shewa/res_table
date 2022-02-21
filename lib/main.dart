@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: const Landing(),
-      // home: const AdminLanding(),
       home: const MyHomePage(title: 'My App'),
-      //home: const SignInUp(),
     );
   }
 }

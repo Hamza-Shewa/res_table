@@ -1,3 +1,4 @@
+import 'package:demo/res_table/expanded_cell.dart';
 import 'package:flutter/material.dart';
 
 class ResTable extends StatelessWidget {
@@ -14,6 +15,7 @@ class ResTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ExpandedCell child = children.first as ExpandedCell;
     return Flexible(
       child: Scrollbar(
         controller: _controller,
@@ -25,7 +27,10 @@ class ResTable extends StatelessWidget {
           child: Column(
             children: <Widget>[
               SizedBox(
-                width: (6 * 200) + (10 * 2 * 6),
+                width: (header.length * 200) +
+                    (((child.childPadding.horizontal / 2) + 2) *
+                        2 *
+                        header.length.toDouble()),
                 child: ExpansionTile(
                   controlAffinity: ListTileControlAffinity.leading,
                   leading: const SizedBox(),
