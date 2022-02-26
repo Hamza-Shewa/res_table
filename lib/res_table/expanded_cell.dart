@@ -16,9 +16,13 @@ class ExpandedCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final padding = childPadding.horizontal == 0
+        ? childPadding.vertical
+        : childPadding.horizontal;
+    print(padding);
     return SizedBox(
       width: (title.length * 200) +
-          (((childPadding.horizontal / 2) + 2) * 2 * title.length.toDouble()),
+          (((padding / 2) + 2) * 2 * title.length.toDouble()),
       child: ExpansionTile(
         controlAffinity: tileControlAffinity,
         title: Row(

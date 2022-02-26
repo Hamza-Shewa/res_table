@@ -27,7 +27,7 @@ class Cell extends StatelessWidget {
       padding: padding,
       child: Text(
         text,
-        style: textStyle ?? Theme.of(context).textTheme.bodyText2,
+        style: textStyle ?? Theme.of(context).textTheme.headline5,
       ),
     );
   }

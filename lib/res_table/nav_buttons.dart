@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
 
 class NavButtons extends StatelessWidget {
-  const NavButtons(
-    this.text, {
+  const NavButtons({
     Key? key,
+    required this.text,
+    required this.onPressed,
   }) : super(key: key);
 
   final String text;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
       child: TextButton(
-        style: ButtonStyle(
-            fixedSize: MaterialStateProperty.all(
-              const Size(200, 60),
+        style: Theme.of(context).textButtonTheme.style!.copyWith(
+              fixedSize: MaterialStateProperty.all(
+                const Size(250, 60),
+              ),
             ),
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.hovered)) {
-                return Colors.lightBlue[200];
-              }
-              return Colors.white54;
-            })),
-        onPressed: () {
-          print('1');
-        },
+        onPressed: onPressed,
         child: Text(
           text,
-          style: Theme.of(context).textTheme.bodyText2,
         ),
       ),
     );

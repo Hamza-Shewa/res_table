@@ -1,23 +1,27 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
+import '../theme/res_table.dart';
 
 class CellButton extends StatelessWidget {
   ///[buttonStyle] overrides the [buttonSize] parameter
-  const CellButton({
+  CellButton({
     Key? key,
     required this.child,
     required this.onPressed,
     this.buttonStyle,
     this.buttonSize = const Size(200, 60),
-    this.hoverColor = Colors.lightBlue,
-    this.color = Colors.white54,
+    this.hoverColor,
+    this.color,
   }) : super(key: key);
 
   final ButtonStyle? buttonStyle;
   final Widget child;
   final VoidCallback onPressed;
   final Size buttonSize;
-  final Color hoverColor;
-  final Color color;
+  late Color? hoverColor;
+  late Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +29,21 @@ class CellButton extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: TextButton(
         style: buttonStyle ??
-            ButtonStyle(
-              fixedSize: MaterialStateProperty.all(
-                buttonSize,
-              ),
-              backgroundColor: MaterialStateProperty.resolveWith(
-                (states) {
-                  if (states.contains(MaterialState.hovered)) {
-                    return hoverColor.withOpacity(0.2);
-                  }
-                  return color;
-                },
-              ),
-            ),
+            Theme.of(context).textButtonTheme.style!.copyWith(
+                  fixedSize: MaterialStateProperty.all(
+                    buttonSize,
+                  ),
+                  backgroundColor: MaterialStateProperty.resolveWith(
+                    (states) {
+                      if (states.contains(MaterialState.hovered)) {
+                        hoverColor ??= ResTable.primary.withOpacity(0.2);
+                        return hoverColor;
+                      }
+                      color ??= ResTable.secondryLight.withOpacity(0.25);
+                      return color;
+                    },
+                  ),
+                ),
         onPressed: onPressed,
         child: child,
       ),
