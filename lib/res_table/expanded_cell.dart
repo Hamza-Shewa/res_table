@@ -5,6 +5,8 @@ class ExpandedCell extends StatelessWidget {
     Key? key,
     required this.title,
     required this.children,
+    this.verticalMargin = 0,
+    this.decoration = const BoxDecoration(),
     this.tileControlAffinity = ListTileControlAffinity.leading,
   }) : super(key: key);
 
@@ -12,10 +14,14 @@ class ExpandedCell extends StatelessWidget {
   final List<Widget> title;
   final ListTileControlAffinity tileControlAffinity;
   final ScrollController controller = ScrollController();
+  final BoxDecoration decoration;
+  final double verticalMargin;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: decoration,
+      margin: EdgeInsets.symmetric(vertical: verticalMargin),
       width: (title.length * 200) + (20 * title.length.toDouble()),
       child: ExpansionTile(
         expandedAlignment: Alignment.centerLeft,

@@ -1,4 +1,3 @@
-import 'package:demo/res_table/expanded_cell.dart';
 import 'package:flutter/material.dart';
 
 class ResTable extends StatelessWidget {
@@ -39,9 +38,8 @@ class ResTable extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  width: (header.length * 200) +
-                      (20 *
-                          header.length.toDouble()),
+                  width:
+                      (header.length * 200) + (20 * header.length.toDouble()),
                   child: ExpansionTile(
                     controlAffinity: ListTileControlAffinity.leading,
                     leading: const SizedBox(),

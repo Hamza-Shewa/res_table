@@ -111,7 +111,9 @@ var lightTheme = global.copyWith(
       textStyle: MaterialStateProperty.resolveWith(
         (states) {
           if (states.contains(MaterialState.hovered)) {
-            return darkTheme.textTheme.headline4;
+            return darkTheme.textTheme.headline4!.copyWith(
+              fontSize: 18,
+            );
           }
           return lightTheme.textTheme.headline5;
         },

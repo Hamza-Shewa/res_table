@@ -8,6 +8,7 @@ class Cell extends StatelessWidget {
     this.margin = const EdgeInsets.all(2.0),
     this.padding = const EdgeInsets.all(0),
     this.textStyle,
+    this.decoration = const BoxDecoration(),
   }) : super(key: key);
 
   final String text;
@@ -15,6 +16,7 @@ class Cell extends StatelessWidget {
   final EdgeInsets margin;
   final EdgeInsets padding;
   final TextStyle? textStyle;
+  final BoxDecoration decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class Cell extends StatelessWidget {
       alignment: Alignment.center,
       width: cardSize.width,
       height: cardSize.height,
-      color: Colors.white,
+      decoration: decoration,
       margin: margin,
       padding: padding,
       child: Text(

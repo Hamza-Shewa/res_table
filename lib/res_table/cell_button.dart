@@ -1,11 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../theme/res_table.dart';
 
 class CellButton extends StatelessWidget {
-  ///[buttonStyle] overrides the [buttonSize] parameter
+  ///[buttonStyle] overrides the [buttonSize],[color],[hoverColor] parameters
   CellButton({
     Key? key,
     required this.child,
