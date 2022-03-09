@@ -22,10 +22,6 @@ class ResTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ExpandedCell child = children.first as ExpandedCell;
-    final _padding = child.childPadding.horizontal == 0
-        ? child.childPadding.vertical
-        : child.childPadding.horizontal;
     return Flexible(
       child: Container(
         decoration: tableDecoration.copyWith(
@@ -44,7 +40,8 @@ class ResTable extends StatelessWidget {
               children: <Widget>[
                 SizedBox(
                   width: (header.length * 200) +
-                      (((_padding / 2) + 2) * 2 * header.length.toDouble()),
+                      (20 *
+                          header.length.toDouble()),
                   child: ExpansionTile(
                     controlAffinity: ListTileControlAffinity.leading,
                     leading: const SizedBox(),

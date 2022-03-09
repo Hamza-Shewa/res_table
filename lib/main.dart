@@ -165,12 +165,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           text: 'Delete',
                           textStyle: Theme.of(context).textTheme.headline4,
                         ),
+                        Cell(
+                          text: 'Delete',
+                          textStyle: Theme.of(context).textTheme.headline4,
+                        ),
+                        Cell(
+                          text: 'Delete',
+                          textStyle: Theme.of(context).textTheme.headline4,
+                        ),
                       ],
                       children: [
                         for (int i = 0; i < 25; i++)
                           ExpandedCell(
-                            childPadding: const EdgeInsets.symmetric(vertical: 10),
                             title: [
+                              Cell(text: 'name $i'),
+                              Cell(text: 'name $i'),
                               Cell(text: 'name $i'),
                               Cell(text: 'age $i'),
                               Cell(text: 'city $i'),
@@ -198,6 +207,119 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                             children: [
                               ExpandedCellChild(
+                                padding: const EdgeInsets.all(4),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(4),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(4),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(4),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(12),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(12),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(12),
+                                child: ListTile(
+                                  title: Text(
+                                    'license number\n',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  isThreeLine: true,
+                                  subtitle: Text(
+                                    'license $i',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              ExpandedCellChild(
+                                padding: const EdgeInsets.all(12),
                                 child: ListTile(
                                   title: Text(
                                     'license number\n',

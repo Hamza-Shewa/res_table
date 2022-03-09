@@ -6,7 +6,7 @@ class ExpandedCellChild extends StatelessWidget {
     required this.child,
     this.cardSize = const Size(200, 80),
     this.cardDecoration,
-    this.margin = const EdgeInsets.symmetric(horizontal: 4),
+    this.margin = const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
     this.padding = const EdgeInsets.all(0),
   }) : super(key: key);
 

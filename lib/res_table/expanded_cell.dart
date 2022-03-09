@@ -1,38 +1,41 @@
 import 'package:flutter/material.dart';
 
 class ExpandedCell extends StatelessWidget {
-  const ExpandedCell({
+  ExpandedCell({
     Key? key,
     required this.title,
     required this.children,
-    this.childPadding = const EdgeInsets.all(8.0),
     this.tileControlAffinity = ListTileControlAffinity.leading,
   }) : super(key: key);
 
   final List<Widget> children;
   final List<Widget> title;
-  final EdgeInsets childPadding;
   final ListTileControlAffinity tileControlAffinity;
+  final ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    final padding = childPadding.horizontal == 0
-        ? childPadding.vertical
-        : childPadding.horizontal;
-    print(padding);
     return SizedBox(
-      width: (title.length * 200) +
-          (((padding / 2) + 2) * 2 * title.length.toDouble()),
+      width: (title.length * 200) + (20 * title.length.toDouble()),
       child: ExpansionTile(
+        expandedAlignment: Alignment.centerLeft,
+        expandedCrossAxisAlignment: CrossAxisAlignment.start,
         controlAffinity: tileControlAffinity,
         title: Row(
           children: title,
         ),
         children: [
-          Padding(
-            padding: childPadding,
-            child: Row(
-              children: children,
+          Scrollbar(
+            controller: controller,
+            scrollbarOrientation: ScrollbarOrientation.bottom,
+            isAlwaysShown: true,
+            child: SingleChildScrollView(
+              controller: controller,
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: children,
+              ),
             ),
           )
         ],
