@@ -40,7 +40,7 @@ class ResTable extends StatelessWidget {
         decoration: tableDecoration.copyWith(
           color: backgroundColor,
         ),
-        alignment: Alignment.center,
+        alignment: fillWidth ? Alignment.center : null,
         padding: padding,
         margin: margin,
         child: Scrollbar(
