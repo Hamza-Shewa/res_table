@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:res_table/res_table.dart';
 
 class ResTable extends StatelessWidget {
   ResTable({
@@ -9,23 +10,37 @@ class ResTable extends StatelessWidget {
     this.tableDecoration = const BoxDecoration(),
     this.padding = const EdgeInsets.all(0),
     this.margin = const EdgeInsets.all(0),
+    this.flex = 1,
+    this.fillWidth = false,
   }) : super(key: key);
 
   final List<Widget> children;
-  final List<Widget> header;
+  final List<Cell> header;
   final Color backgroundColor;
   final BoxDecoration tableDecoration;
   final ScrollController _controller = ScrollController();
   final EdgeInsets padding;
   final EdgeInsets margin;
+  final int flex;
+  final bool fillWidth;
 
   @override
   Widget build(BuildContext context) {
+    double _width = 0;
+    for (var element in header) {
+      _width += element.size.width;
+      _width += element.padding.horizontal;
+      _width += element.margin.horizontal;
+      _width += 8;
+    }
     return Flexible(
+      flex: flex,
       child: Container(
+        width: fillWidth ? double.infinity : null,
         decoration: tableDecoration.copyWith(
           color: backgroundColor,
         ),
+        alignment: Alignment.center,
         padding: padding,
         margin: margin,
         child: Scrollbar(
@@ -38,12 +53,12 @@ class ResTable extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  width:
-                      (header.length * 200) + (20 * header.length.toDouble()),
+                  width: _width,
                   child: ExpansionTile(
-                    controlAffinity: ListTileControlAffinity.leading,
-                    leading: const SizedBox(),
+                    tilePadding: const EdgeInsets.symmetric(horizontal: 8),
+                    trailing: const SizedBox(),
                     title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: header,
                     ),
                   ),

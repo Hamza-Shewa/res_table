@@ -4,7 +4,7 @@ class Cell extends StatelessWidget {
   const Cell({
     Key? key,
     required this.text,
-    this.cardSize = const Size(200, 60),
+    this.size = const Size(200, 60),
     this.margin = const EdgeInsets.all(2.0),
     this.padding = const EdgeInsets.all(0),
     this.textStyle,
@@ -12,7 +12,7 @@ class Cell extends StatelessWidget {
   }) : super(key: key);
 
   final String text;
-  final Size cardSize;
+  final Size size;
   final EdgeInsets margin;
   final EdgeInsets padding;
   final TextStyle? textStyle;
@@ -22,8 +22,8 @@ class Cell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: cardSize.width,
-      height: cardSize.height,
+      width: size.width,
+      height: size.height,
       decoration: decoration,
       margin: margin,
       padding: padding,

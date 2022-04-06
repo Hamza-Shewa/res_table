@@ -7,11 +7,11 @@ class ExpandedCell extends StatelessWidget {
     required this.children,
     this.verticalMargin = 0,
     this.decoration = const BoxDecoration(),
-    this.tileControlAffinity = ListTileControlAffinity.leading,
+    this.tileControlAffinity = ListTileControlAffinity.trailing,
   }) : super(key: key);
 
   final List<Widget> children;
-  final List<Widget> title;
+  final List title;
   final ListTileControlAffinity tileControlAffinity;
   final ScrollController controller = ScrollController();
   final BoxDecoration decoration;
@@ -19,16 +19,28 @@ class ExpandedCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _width = 0;
+    for (var i in title) {
+      _width += i.size.width;
+      _width += i.padding.horizontal;
+      _width += i.margin.horizontal;
+      _width += 8;
+    }
     return Container(
       decoration: decoration,
       margin: EdgeInsets.symmetric(vertical: verticalMargin),
-      width: (title.length * 200) + (20 * title.length.toDouble()),
+      width: _width,
       child: ExpansionTile(
+        childrenPadding: EdgeInsets.zero,
+        tilePadding: const EdgeInsets.symmetric(horizontal: 8),
         expandedAlignment: Alignment.centerLeft,
         expandedCrossAxisAlignment: CrossAxisAlignment.start,
         controlAffinity: tileControlAffinity,
         title: Row(
-          children: title,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List<Widget>.generate(title.length, (index) {
+            return title[index];
+          }),
         ),
         children: [
           Scrollbar(

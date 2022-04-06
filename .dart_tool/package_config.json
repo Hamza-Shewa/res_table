@@ -152,13 +152,13 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "demo",
+      "name": "res_table",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-03-09T23:33:53.088471Z",
+  "generated": "2022-03-11T22:07:01.333499Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }
