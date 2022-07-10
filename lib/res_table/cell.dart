@@ -30,6 +30,7 @@ class Cell extends StatelessWidget {
       child: Text(
         text,
         style: textStyle ?? Theme.of(context).textTheme.headline5,
+        textAlign: TextAlign.center,
       ),
     );
   }

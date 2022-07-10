@@ -28,6 +28,8 @@ class CellButton extends StatelessWidget {
     return Container(
       padding: padding,
       margin: margin,
+      width: size.width,
+      height: size.height,
       child: TextButton(
         style: buttonStyle!.copyWith(
           fixedSize: MaterialStateProperty.all(

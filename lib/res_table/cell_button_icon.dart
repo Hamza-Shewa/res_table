@@ -25,6 +25,8 @@ class CellButtonIcon extends StatelessWidget {
     return Container(
       padding: padding,
       margin: margin,
+      width: size.width,
+      height: size.height,
       child: TextButton(
         style: ButtonStyle(
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,

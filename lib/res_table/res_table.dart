@@ -9,9 +9,10 @@ class ResTable extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.tableDecoration = const BoxDecoration(),
     this.padding = const EdgeInsets.all(0),
-    this.margin = const EdgeInsets.all(0),
+    this.margin = const EdgeInsets.all(8),
     this.flex = 1,
     this.fillWidth = false,
+    this.fillHeight = true,
   }) : super(key: key);
 
   final List<Widget> children;
@@ -23,6 +24,7 @@ class ResTable extends StatelessWidget {
   final EdgeInsets margin;
   final int flex;
   final bool fillWidth;
+  final bool fillHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,21 @@ class ResTable extends StatelessWidget {
       _width += element.margin.horizontal;
       _width += 8;
     }
+    ExpandedCell item = children.first as ExpandedCell;
+
+    List<Cell> newList = [
+      if (item.tileControlAffinity == ListTileControlAffinity.leading)
+        const Cell(
+          text: '',
+          size: Size(50, 60),
+        ),
+      for (Cell item in header) item,
+      if (item.tileControlAffinity == ListTileControlAffinity.trailing)
+        const Cell(
+          text: '',
+          size: Size(50, 60),
+        ),
+    ];
     return Flexible(
       flex: flex,
       child: Container(
@@ -40,32 +57,49 @@ class ResTable extends StatelessWidget {
         decoration: tableDecoration.copyWith(
           color: backgroundColor,
         ),
-        alignment: fillWidth ? Alignment.center : null,
+        alignment: fillWidth
+            ? fillHeight
+                ? Alignment.center
+                : null
+            : null,
         padding: padding,
         margin: margin,
         child: Scrollbar(
           controller: _controller,
-          isAlwaysShown: true,
+          thumbVisibility: true,
           scrollbarOrientation: ScrollbarOrientation.top,
           child: SingleChildScrollView(
             controller: _controller,
             scrollDirection: Axis.horizontal,
             child: Column(
+              mainAxisSize: fillHeight ? MainAxisSize.max : MainAxisSize.min,
               children: <Widget>[
                 SizedBox(
                   width: _width,
                   child: ExpansionTile(
                     tilePadding: const EdgeInsets.symmetric(horizontal: 8),
                     trailing: const SizedBox(),
+                    leading: const SizedBox(),
                     title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: header,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List<Widget>.generate(
+                        item.children.isEmpty ? header.length : newList.length,
+                        (index) {
+                          return Flexible(
+                            child: item.children.isEmpty
+                                ? header[index]
+                                : newList[index],
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
                 Flexible(
                   child: SingleChildScrollView(
                     child: Column(
+                      mainAxisSize:
+                          fillHeight ? MainAxisSize.max : MainAxisSize.min,
                       children: children,
                     ),
                   ),
